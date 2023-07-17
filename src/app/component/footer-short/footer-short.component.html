@@ -1,0 +1,73 @@
+<div class="footer" fxLayout="column" *ngIf="!isMobile">
+  <div fxLayout="row" fxFlex="grow" fxLayoutAlign="space-between">
+    <div fxFlex="45" class="addPaddingSide">
+      <div class="contact-header">REACH US:</div>
+      <div fxLayoutAlign="start center">
+        <div class="addMarginRight16">
+          <mat-icon>location_on</mat-icon>
+        </div>
+        <div>
+          MDRRMO Libon, LGU Libon Compound <br />
+          Brgy. Zone 2, Libon, Albay 4507
+        </div>
+      </div>
+      <div fxLayoutAlign="start center">
+        <div class="addMarginRight16">
+          <mat-icon>call</mat-icon>
+        </div>
+        <div>+63 917 864 1084</div>
+      </div>
+      <div fxLayoutAlign="start center">
+        <div class="addMarginRight16">
+          <mat-icon>mail</mat-icon>
+        </div>
+        <div>mdrrmolibon@gmail.com</div>
+      </div>
+    </div>
+    <div fxFlex="45" fxLayout="column" class="addPaddingSide">
+      <div fxFlex="grow">
+        <img class="page1-header-icon" src="assets/agaplibonfooter.png" />
+      </div>
+      <div fxLayout="row">
+        <div fxLayoutAlign="space-between">
+          <img class="social-img" src="assets/facebook-icon.png" />
+          <img class="social-img" src="assets/twitter-icon.png" />
+          <img class="social-img" src="assets/instagram-icon.png" />
+          <img class="social-img" src="assets/linkedin-icon.png" />
+          <img class="social-img" src="assets/youtube-icon.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    fxLayout="row"
+    fxFlex="grow"
+    class="addPaddingTop"
+    fxLayoutAlign="space-between"
+  >
+    <div fxFlex="45" class="addPaddingSide">
+      agaplibon.com © 2022. All rights reserved.
+    </div>
+    <div fxFlex="45" class="addPaddingSide" fxLayout="row">
+      <div class="addMarginRight32 link" (click)="gotoPrivacyPolicy()">
+        Privacy Policy
+      </div>
+      <div class="addMarginRight32 link" (click)="gotoTermsAndCondition()">
+        Terms of Use
+      </div>
+      <div class="link">Contact Us</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-mobile" fxLayout="column" *ngIf="isMobile">
+  <img class="main-img-mobile" src="assets/agaplibonfooter.png" />
+  <div fxLayout="row" fxLayoutAlign="space-between" class="addMarginTop20">
+    <div class="link" (click)="gotoPrivacyPolicy()">Privacy Policy</div>
+    <div class="link" (click)="gotoTermsAndCondition()">Terms of Use</div>
+    <div class="link">Contact Us</div>
+  </div>
+  <div class="addMarginTop20 center-content">
+    agaplibon.com © 2022. All rights reserved.
+  </div>
+</div>
