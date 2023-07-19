@@ -31,7 +31,7 @@ export class SignUpService {
     email: ['', Validators.required],
     referal_code: '',
     mobile_number: '',
-    status: 1,
+    status: 0,
   }) as SignUpFormGroup;
 
   constructor(private fb: FormBuilder, private httpClient: HttpClient) {}
