@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   apiProtocol: 'http',
   apiUrl: '146.190.145.208:3005',
-  backendUrl: 'http://146.190.145.208:3005',
+  backendUrl: 'https://146.190.145.208:3005',
   apiPort: '3000',
   apiVersion: 'v1',
   apkUrl:

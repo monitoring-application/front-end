@@ -7,8 +7,8 @@ export const environment = {
   // apiProtocol: 'https',
   apiProtocol: 'http',
   apiUrl: '157.230.37.157:3005',
-  backendUrl: 'http://146.190.145.208:3005',
-  // backendUrl: 'http://localhost:3000',
+  // backendUrl: 'http://146.190.145.208:3005',
+  backendUrl: 'https://localhost:3000',
   // apiUrl: "commandcenterapi.agaplibon.com", // "167.172.94.94", "commandcenterapi.agaplibon.com", //"178.128.107.47"
   apiPort: '3000',
   apiVersion: 'v1',
