@@ -19,6 +19,9 @@ import { TermsAndConditionComponent } from './pages/terms-and-condition/terms-an
 import { PrivacyPolicyWebComponent } from './pages/privacy-policy-web/privacy-policy-web.component';
 import { TermsAndConditionWebComponent } from './pages/terms-and-condition-web/terms-and-condition-web.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { PanelListComponent } from './pages/c-panel/panel-list/panel-list.component';
+import { PanelCreateComponent } from './pages/c-panel/panel-create/panel-create.component';
+import { PanelCreateDlgComponent } from './pages/c-panel/panel-create-dlg/panel-create-dlg.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     PrivacyPolicyWebComponent,
     TermsAndConditionWebComponent,
     SignUpComponent,
+    PanelListComponent,
+    PanelCreateComponent,
+    PanelCreateDlgComponent,
   ],
   imports: [
     ToastrModule.forRoot({

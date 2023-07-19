@@ -33,5 +33,19 @@ font-family: "Montserrat", Times, serif !important;
 font-size: 10px;
 }
 button.fonts{
+  /* background-color: white; */
   font-family: "Poppins", Times, serif !important;
+  font-weight: 600;
+  color: #A41608;
+  border: 3px solid #A41608;
+  border-radius: 10px;
+}
+.buttonLogin {
+  background-color: transparent;
+  color: black;
+  height: 60px;
+  width: 230px;
+  border-radius: 15px;
+  font-family: "Poppins", Times, serif !important;
+  font-size: 18px;
 }
