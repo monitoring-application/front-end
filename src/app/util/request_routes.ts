@@ -4,7 +4,7 @@ export class requestRoutes {
   //private mainUrl: string = environment.apiProtocol + "://" + environment.apiUrl + ":" + environment.apiPort;
   private mainUrl: string =
     environment.apiProtocol + '://' + environment.backendUrl;
-  private apiVersion: string = '/docs/' + environment.apiVersion + '/';
+  private apiVersion: string = '/api/' + environment.apiVersion + '/';
 
   public baseUrl: string = this.mainUrl + this.apiVersion;
   public baseBackendUrl: string = environment.backendUrl + this.apiVersion;
