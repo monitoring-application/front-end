@@ -50,8 +50,9 @@ export class SignUpComponent implements OnInit {
           'Success'
         );
         setTimeout(() => {
+          this.loading = false;
           this.signUpService.form.reset(this.signUpService.resetform.value);
-        }, 1000);
+        }, 500);
       },
     });
   }

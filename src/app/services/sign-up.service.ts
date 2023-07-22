@@ -46,4 +46,31 @@ export class SignUpService {
       headers: header,
     });
   }
+  fetchData() {
+    var url: string = routes.baseBackendUrl + routes.signUp;
+    let header = new HttpHeaders();
+    header = header.set('api-key', routes.apiKey);
+
+    const data = this.httpClient.get(url, {
+      headers: header,
+    });
+    return data;
+  }
+
+  approve(id: string, status: number) {
+    var param: string = '/approve/' + id + '/' + status;
+    var url: string = routes.baseBackendUrl + routes.signUp + param;
+
+    let header = new HttpHeaders();
+    header = header.set('api-key', routes.apiKey);
+
+    const data = this.httpClient.patch(
+      url,
+      {},
+      {
+        headers: header,
+      }
+    );
+    return data;
+  }
 }

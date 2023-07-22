@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { filter, map, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { Location } from '@angular/common';
+import { ContactUsService } from 'src/app/services/contact-us.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { NotificationType } from 'src/app/util/notification_type';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +14,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  form = this.contactService.form;
   mediaSub: Subscription | undefined;
   public isMobile: boolean = false;
+  loading = false;
 
   hide: boolean = true;
   loginError: string = '';
@@ -21,10 +26,12 @@ export class LoginComponent implements OnInit {
   password: string = '';
 
   constructor(
-    private authService: AuthService,
     public router: Router,
+    private location: Location,
+    private authService: AuthService,
     public mediaObserver: MediaObserver,
-    private location: Location
+    private contactService: ContactUsService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -66,5 +73,47 @@ export class LoginComponent implements OnInit {
 
   back() {
     this.location.back();
+  }
+
+  validation(): boolean {
+    this.loading = true;
+    this.form.markAllAsTouched();
+
+    if (!this.form.valid) {
+      this.loading = false;
+
+      this.notificationService.showNotification(
+        NotificationType.warning,
+        'Please supply needed!',
+        'Warning'
+      );
+      return false;
+    }
+
+    return true;
+  }
+  submit() {
+    if (!this.validation()) return;
+
+    this.contactService.create()?.subscribe({
+      next: (res) => {
+        console.log({ result: res });
+      },
+      error: (err) => {
+        console.log({
+          error: err,
+        });
+      },
+      complete: () => {
+        this.notificationService.showNotification(
+          NotificationType.success,
+          'Message Sent!',
+          'Success'
+        );
+        setTimeout(() => {
+          this.contactService.form.reset(this.contactService.resetform.value);
+        }, 1000);
+      },
+    });
   }
 }
