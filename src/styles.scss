@@ -19,10 +19,10 @@ mat-card {
   background-color: rgb(255 255 255 / 30%);
 }
 
-button, table {
+button, table, h4, h5{
   font-family: "Poppins", Times, serif !important;
 }
-mat-form-field, mat-paginator {
+mat-form-field, mat-paginator, mat-option, mat-select {
   font-family: "Poppins", Times, serif !important;
 }
 .mat-row .mat-cell {
@@ -31,7 +31,7 @@ mat-form-field, mat-paginator {
 }
 .mat-row:hover .mat-cell {
   background-color: #cecece;
-  color: #868686ab;
+  color: whitesmoke;
 }
 .row-is-clicked {
   background-color: #868686ab;

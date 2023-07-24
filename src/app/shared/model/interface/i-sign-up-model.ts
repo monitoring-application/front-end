@@ -7,5 +7,6 @@ export interface ISignUpModel {
   email: string;
   referal_code: string;
   mobile_number: string;
+  downline: number;
   status: number;
 }

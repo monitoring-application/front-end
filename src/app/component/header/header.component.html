@@ -1,3 +1,4 @@
 <div fxLayout="row" fxLayoutAlign="start center">
-  <img src="assets/Images/banner/header-banner.jpg" />
+  <img *ngIf="!isMobile" src="assets/Images/banner/header-banner.jpg" />
+  <img *ngIf="isMobile" src="assets/Images/banner/header-banner-mobile.jpg" />
 </div>

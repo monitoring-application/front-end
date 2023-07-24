@@ -11,6 +11,7 @@ export interface SignUpFormGroup extends FormGroup {
     email: AbstractControl;
     referal_code: AbstractControl;
     mobile_number: AbstractControl;
+    downline: AbstractControl;
     status: AbstractControl;
   };
 }

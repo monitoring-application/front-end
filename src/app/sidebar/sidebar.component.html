@@ -9,6 +9,23 @@
       {{ systemName }}
     </div>
   </div>
+  <div class="user-panel" fxLayout="column" fxLayoutAlign="center center">
+    <img class="user-panel-avatar" src="assets/Images/rose-logo.png" />
+    <h4 class="user-panel-name">Administrator</h4>
+    <h5 class="user-panel-email">{{ email }}</h5>
+    <div class="user-panel-icons">
+      <a routerLink="/profile/overview" mat-icon-button>
+        <mat-icon class="icon-18">account_circle</mat-icon>
+      </a>
+      <a routerLink="/profile/settings" mat-icon-button>
+        <mat-icon class="icon-18">settings</mat-icon>
+      </a>
+      <a (click)="logout()" mat-icon-button>
+        <mat-icon class="icon-18">exit_to_app</mat-icon>
+      </a>
+    </div>
+  </div>
+  <mat-divider> </mat-divider>
   <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" [opened]="opened">
       <mat-nav-list

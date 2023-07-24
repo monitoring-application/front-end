@@ -13,24 +13,24 @@ export class AuthService {
     return loginStatus == 'true';
   }
 
-  // userLogin(username: string, password: string): Promise<any> {
-  //   return new Promise((resolve, reject) => {
-  //     this.httpRequest.isUserAvailable(username, password).subscribe({
-  //       next: (result) => {
-  //         if (result.statusCode == 201 && result.data) {
-  //           sessionStorage.setItem("isLoggedIn", "true");
-  //           sessionStorage.setItem("user", JSON.stringify(result.data));
-  //           resolve(true);
-  //         } else {
-  //           reject(false);
-  //         }
-  //       },
-  //       error: (err) => {
-  //         reject(err);
-  //       }
-  //     });
-  //   });
-  // }
+  userLogin(username: string, password: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.httpRequest.isUserAvailable(username, password).subscribe({
+        next: (result) => {
+          if (result.statusCode == 201 && result.data) {
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('user', JSON.stringify(result.data));
+            resolve(true);
+          } else {
+            reject(false);
+          }
+        },
+        error: (err) => {
+          reject(err);
+        },
+      });
+    });
+  }
 
   isLoggedIn(): boolean {
     return this.isAuthenticated();

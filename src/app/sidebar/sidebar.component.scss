@@ -70,3 +70,47 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
     border-top: 2px solid lightgrey;
     border-right: 1px solid lightgrey;
   }
+  .user-panel {
+    padding: 16px 0px;
+    text-align: center;
+    height: auto;
+    margin-bottom: 8px;
+    border-radius: 50rem;
+  }
+
+  .user-panel-avatar{
+    width: 64px;
+    margin: 0px 0px 0px 95px;
+  }
+
+.user-panel-name,
+.user-panel-email {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-weight: normal;
+}
+
+.user-panel-name,
+.user-panel-email,
+.user-panel-icons {
+  opacity: 1;
+  // transition: transitions.swift-ease-out(opacity);
+}
+
+.user-panel-icons {
+  white-space: nowrap;
+
+  .mat-icon-button {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+  }
+}
+
+
+.icon-18 {
+  width: 18px!important;
+  height: 18px!important;
+  font-size: 18px!important;
+  line-height: 18px!important
+}

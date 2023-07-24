@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {
@@ -11,9 +12,12 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
+import { NotificationService } from 'src/app/services/notification.service';
 import { SignUpService } from 'src/app/services/sign-up.service';
 import { ISignUpModel } from 'src/app/shared/model/interface/i-sign-up-model';
+import { NotificationType } from 'src/app/util/notification_type';
 import { requestRoutes } from 'src/app/util/request_routes';
+import { DownlineDlgComponent } from '../downline/downline-dlg/downline-dlg.component';
 const columns = [
   'membersCode',
   'fullName',
@@ -33,6 +37,7 @@ var routes = new requestRoutes();
 })
 export class MembersListComponent implements OnInit {
   search = '';
+  isApproved = 0;
   result_length = 0;
   pageNumber = 1;
   pageSize = 10;
@@ -45,8 +50,10 @@ export class MembersListComponent implements OnInit {
   selectedItem!: ISignUpModel;
 
   constructor(
+    private dialog: MatDialog,
+    private httpClient: HttpClient,
     private signUpService: SignUpService,
-    private httpClient: HttpClient
+    private notificationService: NotificationService
   ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -67,7 +74,10 @@ export class MembersListComponent implements OnInit {
         switchMap((value) => {
           this.search = value;
 
-          var url: string = routes.baseBackendUrl + routes.signUp;
+          var url: string =
+            routes.baseBackendUrl +
+            routes.signUp +
+            `/pagination?search_value=${value}&pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`;
           let header = new HttpHeaders();
           header = header.set('api-key', routes.apiKey);
 
@@ -86,7 +96,11 @@ export class MembersListComponent implements OnInit {
         next: (res) => {
           const retVal: any = res;
           const { data } = retVal;
-          this.dataSource = new MatTableDataSource(data);
+          const { result } = data;
+          const { count } = data;
+
+          this.result_length = count;
+          this.dataSource = new MatTableDataSource(result);
         },
         error: (err) => {
           console.log({
@@ -104,31 +118,68 @@ export class MembersListComponent implements OnInit {
 
   fetchData() {
     this.isLoading = true;
-    this.signUpService.fetchData()?.subscribe({
-      next: (res) => {
-        const retVal: any = res;
-        const { data } = retVal;
-        this.dataSource = data;
-      },
+    this.signUpService
+      .fetchData(this.search, this.pageNumber, this.pageSize)
+      ?.subscribe({
+        next: (res) => {
+          const retVal: any = res;
+          const { data } = retVal;
+          const { result } = data;
+          const { count } = data;
+
+          this.result_length = count;
+          this.dataSource = new MatTableDataSource(result);
+        },
+        error: (err) => {
+          console.log({
+            error: err,
+          });
+        },
+        complete: () => {
+          setTimeout(async () => {
+            this.isLoading = false;
+          }, 1000);
+        },
+      });
+  }
+  rowSelected(item: ISignUpModel) {
+    this.selectedItem = item;
+    this.isApproved = item.status;
+  }
+  viewDownline(code: string) {
+    const dialogRef = this.dialog.open(DownlineDlgComponent, {
+      hasBackdrop: true,
+      width: '80vw',
+      maxHeight: '90vh',
+      disableClose: true,
+      autoFocus: false,
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '250ms',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => result);
+  }
+  remove() {
+    this.signUpService.remove(this.selectedItem.id)?.subscribe({
+      next: (res) => {},
       error: (err) => {
         console.log({
           error: err,
         });
       },
       complete: () => {
+        this.notificationService.showNotification(
+          NotificationType.success,
+          'Successfully Removed!',
+          'Success'
+        );
         setTimeout(async () => {
-          this.isLoading = false;
+          this.fetchData();
         }, 1000);
       },
     });
   }
-  rowSelected(item: ISignUpModel) {
-    this.selectedItem = item;
-  }
-  create() {}
-  remove() {}
-  approve() {
-    var status = this.selectedItem.status == 0 ? 1 : 0;
+  approve(status: number) {
     this.signUpService.approve(this.selectedItem.id, status)?.subscribe({
       next: (res) => {},
       error: (err) => {
@@ -137,14 +188,39 @@ export class MembersListComponent implements OnInit {
         });
       },
       complete: () => {
-        setTimeout(async () => {}, 1000);
+        this.notificationService.showNotification(
+          NotificationType.success,
+          'Successfully Approved!',
+          'Success'
+        );
+        setTimeout(async () => {
+          this.fetchData();
+        }, 1000);
       },
     });
+  }
+  refresh() {
+    this.clear();
+    this.fetchData();
   }
   clear() {
     this.search = '';
     this.searchControl.reset();
     this.paginator.firstPage();
+
+    this.fetchData();
+  }
+  convertStatus(status: number) {
+    if (status === 0) {
+      return 'Pending';
+    } else if (status === 1) {
+      return 'Approve';
+    } else if (status === 2) {
+      return 'Disapprove';
+    } else if (status === 3) {
+      return 'In Active';
+    }
+    return 'Undefined';
   }
   paginate(item: any) {
     this.pageNumber = item.pageIndex + 1;

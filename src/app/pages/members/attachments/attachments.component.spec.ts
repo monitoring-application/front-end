@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MembersCreateDlgComponent } from './members-create-dlg.component';
+import { AttachmentsComponent } from './attachments.component';
 
-describe('MembersCreateDlgComponent', () => {
-  let component: MembersCreateDlgComponent;
-  let fixture: ComponentFixture<MembersCreateDlgComponent>;
+describe('AttachmentsComponent', () => {
+  let component: AttachmentsComponent;
+  let fixture: ComponentFixture<AttachmentsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MembersCreateDlgComponent ]
+      declarations: [ AttachmentsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MembersCreateDlgComponent);
+    fixture = TestBed.createComponent(AttachmentsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

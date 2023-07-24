@@ -35,7 +35,6 @@ export class SignUpComponent implements OnInit {
   }
   submit() {
     if (!this.validation()) return;
-
     this.signUpService.create()?.subscribe({
       next: (res) => {},
       error: (err) => {

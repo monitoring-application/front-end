@@ -2,11 +2,14 @@ section.body{
     height: auto;
     width: auto;
 }
-img.rose-lin {
+/* img.rose-lin {
   width: 100%;
   margin-left: 0;
+} */
+img.rose-lin {
+  width: 50%;
+  margin-left: 25%;
 }
-
 
 img.rose-lin-mobile{
   width: 80%;
@@ -16,7 +19,11 @@ img.rose-lin-mobile{
     color: #16224bde;
 }
 button.fonts{
-    font-family: "Poppins", Times, serif !important;
+  font-family: "Poppins", Times, serif !important;
+  font-weight: 600;
+  color: #A41608;
+  border: 3px solid #A41608;
+  border-radius: 10px;
 }
 .pad-left{
     padding-left: 10%;

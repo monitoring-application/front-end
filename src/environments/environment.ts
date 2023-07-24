@@ -9,8 +9,7 @@ export const environment = {
   apiUrl: 'https://api.friendsofroselin.com',
   backendUrl: 'https://api.friendsofroselin.com',
   // apiUrl: '146.190.145.208:3005',
-  // // backendUrl: 'http://localhost:3000',
-  // backendUrl: 'https://146.190.145.208:3005',
+  // backendUrl: 'http://localhost:3000',
   // apiUrl: "commandcenterapi.agaplibon.com", // "167.172.94.94", "commandcenterapi.agaplibon.com", //"178.128.107.47"
   apiPort: '3000',
   apiVersion: 'v1',

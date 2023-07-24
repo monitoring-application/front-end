@@ -21,6 +21,7 @@ export class SignUpService {
     email: ['', Validators.required],
     referal_code: '',
     mobile_number: '',
+    downline: 0,
     status: 0,
   }) as SignUpFormGroup;
   resetform = this.fb.group({
@@ -31,6 +32,7 @@ export class SignUpService {
     email: ['', Validators.required],
     referal_code: '',
     mobile_number: '',
+    downline: 0,
     status: 0,
   }) as SignUpFormGroup;
 
@@ -46,8 +48,12 @@ export class SignUpService {
       headers: header,
     });
   }
-  fetchData() {
-    var url: string = routes.baseBackendUrl + routes.signUp;
+  fetchData(value: string, pageNumber: number, pageSize: number) {
+    var url: string =
+      routes.baseBackendUrl +
+      routes.signUp +
+      `/pagination?search_value=${value}&pageNumber=${pageNumber}&pageSize=${pageSize}`;
+
     let header = new HttpHeaders();
     header = header.set('api-key', routes.apiKey);
 
@@ -71,6 +77,16 @@ export class SignUpService {
         headers: header,
       }
     );
+    return data;
+  }
+  remove(id: string) {
+    var url: string = routes.baseBackendUrl + routes.signUp + '/' + id;
+    let header = new HttpHeaders();
+    header = header.set('api-key', routes.apiKey);
+
+    const data = this.httpClient.delete(url, {
+      headers: header,
+    });
     return data;
   }
 }

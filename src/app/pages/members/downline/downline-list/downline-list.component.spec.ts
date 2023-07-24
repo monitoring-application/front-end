@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AttachmentComponent } from './attachment.component';
+import { DownlineListComponent } from './downline-list.component';
 
-describe('AttachmentComponent', () => {
-  let component: AttachmentComponent;
-  let fixture: ComponentFixture<AttachmentComponent>;
+describe('DownlineListComponent', () => {
+  let component: DownlineListComponent;
+  let fixture: ComponentFixture<DownlineListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AttachmentComponent ]
+      declarations: [ DownlineListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AttachmentComponent);
+    fixture = TestBed.createComponent(DownlineListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,12 +6,6 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/angular-material.module';
 import { LandingPageRoutes } from './landing-page.routing';
 import { NgModule } from '@angular/core';
-import { AttachmentComponent } from '../attachment/attachment.component';
-import { SignUpComponent } from '../sign-up/sign-up.component';
-import { FooterComponent } from 'src/app/component/footer/footer.component';
-import { HeaderComponent } from 'src/app/component/header/header.component';
-import { MembersCreateDlgComponent } from '../members/members-create-dlg/members-create-dlg.component';
-import { MembersCreateComponent } from '../members/members-create/members-create.component';
 import { MembersListComponent } from '../members/members-list/members-list.component';
 
 @NgModule({
@@ -24,11 +18,6 @@ import { MembersListComponent } from '../members/members-list/members-list.compo
     FlexLayoutModule,
     ReactiveFormsModule,
   ],
-  declarations: [
-    AttachmentComponent,
-    MembersListComponent,
-    MembersCreateComponent,
-    MembersCreateDlgComponent,
-  ],
+  declarations: [MembersListComponent],
 })
 export class AdminLayoutModule {}

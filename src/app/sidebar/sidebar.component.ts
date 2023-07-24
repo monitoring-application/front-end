@@ -32,9 +32,10 @@ interface states {
       ),
     ]),
   ],
-  styleUrls: ['./sidebar.component.css'],
+  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  email = 'unitesly@gmail.com';
   expanded: boolean = false;
   expandState: states[] = [];
   public opened: boolean = true;
@@ -100,5 +101,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnDestroy() {
     this.mediaWatcher.unsubscribe();
+  }
+  logout() {
+    this.router.navigateByUrl('/login');
   }
 }

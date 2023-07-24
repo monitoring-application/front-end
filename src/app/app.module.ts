@@ -17,6 +17,12 @@ import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { MembersLoginComponent } from './pages/members/members-login/members-login.component';
+import { AttachmentsComponent } from './pages/members/attachments/attachments.component';
+import { AttachmentsFieldsComponent } from './shared/components/attachments-fields/attachments-fields.component';
+import { AttachmentsListComponent } from './shared/components/attachments-list/attachments-list.component';
+import { DownlineListComponent } from './pages/members/downline/downline-list/downline-list.component';
+import { DownlineDlgComponent } from './pages/members/downline/downline-dlg/downline-dlg.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,12 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     FooterComponent,
     HeaderComponent,
     SignUpComponent,
+    MembersLoginComponent,
+    AttachmentsComponent,
+    AttachmentsFieldsComponent,
+    AttachmentsListComponent,
+    DownlineListComponent,
+    DownlineDlgComponent,
   ],
   imports: [
     ToastrModule.forRoot({

@@ -37,14 +37,6 @@ export class FooterComponent implements OnInit {
       });
   }
 
-  gotoPrivacyPolicy() {
-    this.router.navigate(['/privacy-policy']);
-  }
-
-  gotoTermsAndCondition() {
-    this.router.navigate(['/terms-and-condition']);
-  }
-
   validation(): boolean {
     this.loading = true;
     this.form.markAllAsTouched();

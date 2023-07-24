@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { MembersLoginComponent } from './pages/members/members-login/members-login.component';
+import { AttachmentsComponent } from './pages/members/attachments/attachments.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,14 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignUpComponent,
+  },
+  {
+    path: 'member-login',
+    component: MembersLoginComponent,
+  },
+  {
+    path: 'member-attachments',
+    component: AttachmentsComponent,
   },
   {
     path: '',

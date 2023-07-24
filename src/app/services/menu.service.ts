@@ -11,7 +11,7 @@ export class MenuService {
   routes: RouteInfo[] = [
     {
       path: '/members',
-      title: 'Members List',
+      title: 'Members',
       icon: 'supervisor_account',
       class: '',
       children: [],
