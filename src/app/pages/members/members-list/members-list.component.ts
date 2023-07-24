@@ -153,8 +153,6 @@ export class MembersListComponent implements OnInit {
       maxHeight: '90vh',
       disableClose: true,
       autoFocus: false,
-      enterAnimationDuration: '500ms',
-      exitAnimationDuration: '250ms',
     });
 
     dialogRef.afterClosed().subscribe((result) => result);
