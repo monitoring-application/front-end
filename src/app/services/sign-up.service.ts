@@ -16,24 +16,24 @@ export class SignUpService {
   form = this.fb.group({
     id: '',
     member_code: '',
-    first_name: ['', Validators.required],
-    last_name: ['', Validators.required],
+    full_name: ['', Validators.required],
     email: ['', Validators.required],
-    referal_code: '',
+    password: '',
     mobile_number: '',
-    downline: 0,
-    status: 0,
+    upline: '',
+    ttlDownline: 0,
+    status: 1,
   }) as SignUpFormGroup;
   resetform = this.fb.group({
     id: '',
     member_code: '',
-    first_name: ['', Validators.required],
-    last_name: ['', Validators.required],
+    full_name: ['', Validators.required],
     email: ['', Validators.required],
-    referal_code: '',
+    password: '',
     mobile_number: '',
-    downline: 0,
-    status: 0,
+    upline: '',
+    ttlDownline: 0,
+    status: 1,
   }) as SignUpFormGroup;
 
   constructor(private fb: FormBuilder, private httpClient: HttpClient) {}

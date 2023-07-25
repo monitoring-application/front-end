@@ -9,21 +9,9 @@
         </div>
         <div>
           <form action="" [formGroup]="form">
-            <div class="text-color text-lg font-bold">Referal Code</div>
+            <div class="text-color text-lg font-bold">Full name</div>
             <mat-form-field class="w-3/4" appearance="outline">
-              <input matInput formControlName="referal_code" />
-            </mat-form-field>
-            <div class="text-color text-lg font-bold">Mobile Number</div>
-            <mat-form-field class="w-3/4" appearance="outline">
-              <input matInput formControlName="mobile_number" />
-            </mat-form-field>
-            <div class="text-color text-lg font-bold">First Name</div>
-            <mat-form-field class="w-3/4" appearance="outline">
-              <input matInput formControlName="first_name" />
-            </mat-form-field>
-            <div class="text-color text-lg font-bold">Last Name</div>
-            <mat-form-field class="w-3/4" appearance="outline">
-              <input matInput formControlName="last_name" />
+              <input matInput formControlName="full_name" />
             </mat-form-field>
             <div class="text-color text-lg font-bold">Email Address</div>
             <mat-form-field class="w-3/4" appearance="outline">
@@ -33,6 +21,10 @@
                 type="email"
                 [email]="true"
               />
+            </mat-form-field>
+            <div class="text-color text-lg font-bold">Mobile Number</div>
+            <mat-form-field class="w-3/4" appearance="outline">
+              <input matInput formControlName="mobile_number" />
             </mat-form-field>
             <div>
               <button mat-raised-button class="fonts w-36" (click)="submit()">
@@ -50,47 +42,33 @@
       <div>
         <img class="rose-lin-mobile" src="assets/Images/rose-logo.png" />
       </div>
-      <div class="col-span-2 mt-5">
+      <div class="col-span-2">
         <form action="" [formGroup]="form">
-          <div class="grid grid-cols-2 gap-2">
-            <div>
-              <div class="text-color text-sm font-bold">Referal Code</div>
-              <mat-form-field class="w-full" appearance="outline">
-                <input matInput formControlName="referal_code" />
-              </mat-form-field>
-            </div>
-            <div>
-              <div class="text-color text-sm font-bold">Mobile Number</div>
-              <mat-form-field class="w-full" appearance="outline">
-                <input matInput formControlName="mobile_number" />
-              </mat-form-field>
-            </div>
-            <div>
-              <div class="text-color text-sm font-bold">First Name</div>
-              <mat-form-field class="w-full" appearance="outline">
-                <input matInput formControlName="first_name" />
-              </mat-form-field>
-            </div>
-            <div>
-              <div class="text-color text-sm font-bold">Last Name</div>
-              <mat-form-field class="w-full" appearance="outline">
-                <input matInput formControlName="last_name" />
-              </mat-form-field>
-            </div>
-            <div class="col-span-2">
-              <div class="text-color text-sm font-bold">Email Address</div>
-              <mat-form-field class="w-full" appearance="outline">
-                <input
-                  matInput
-                  formControlName="email"
-                  type="email"
-                  [email]="true"
-                />
-              </mat-form-field>
-            </div>
+          <div>
+            <div class="text-color text-sm font-bold">Full name</div>
+            <mat-form-field class="w-full" appearance="outline">
+              <input matInput formControlName="full_name" />
+            </mat-form-field>
+          </div>
+          <div class="col-span-2">
+            <div class="text-color text-sm font-bold">Email Address</div>
+            <mat-form-field class="w-full" appearance="outline">
+              <input
+                matInput
+                formControlName="email"
+                type="email"
+                [email]="true"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-span-2">
+            <div class="text-color text-sm font-bold">Mobile Number</div>
+            <mat-form-field class="w-full" appearance="outline">
+              <input matInput formControlName="mobile_number" />
+            </mat-form-field>
           </div>
           <div>
-            <button mat-raised-button class="fonts w-36" (click)="submit()">
+            <button mat-raised-button class="fonts w-28" (click)="submit()">
               Sign Up
             </button>
           </div>
@@ -100,3 +78,36 @@
   </section>
   <app-footer></app-footer>
 </section>
+<!-- 
+<div
+  style="
+    background-color: #ffffff;
+    border: 1px solid #e0e4e6;
+    padding: 40px;
+    padding-bottom: 52px;
+    padding-top: 41px;
+    border-radius: 10px;
+    margin-top: 20px;
+  "
+>
+  <div>
+    <p style="font-size: 16px"><b>Hi, John</b></p>
+    <div style="padding-left: 20px">
+      <p>You can refer now a friend with this link:</p>
+      <p>Username:</p>
+      <p>Password:</p>
+      <div style="padding-top: 16px">
+        <a
+          style="
+            background-color: #199319;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 10px;
+          "
+          >Login to your account</a
+        >
+      </div>
+    </div>
+  </div>
+</div> -->

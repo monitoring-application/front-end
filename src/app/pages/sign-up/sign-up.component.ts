@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Console } from 'console';
 import { Subscription, filter, map } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification.service';
 import { SignUpService } from 'src/app/services/sign-up.service';
@@ -19,7 +21,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     public mediaObserver: MediaObserver,
     private signUpService: SignUpService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -32,9 +35,17 @@ export class SignUpComponent implements OnInit {
       .subscribe((change: MediaChange) => {
         this.isMobile = change.mqAlias === 'xs' ? true : false;
       });
+
+    this.route.params.subscribe((param: Params) => {
+      if (param['code']) {
+        console.log({ code: param['code'] });
+        // this.form.controls.referal_code.setValue(param['code']);
+      }
+    });
   }
   submit() {
     if (!this.validation()) return;
+
     this.signUpService.create()?.subscribe({
       next: (res) => {},
       error: (err) => {
@@ -56,12 +67,9 @@ export class SignUpComponent implements OnInit {
     });
   }
   validation(): boolean {
-    this.loading = true;
     this.form.markAllAsTouched();
 
     if (!this.form.valid) {
-      this.loading = false;
-
       this.notificationService.showNotification(
         NotificationType.warning,
         'Please supply needed!',
@@ -70,34 +78,6 @@ export class SignUpComponent implements OnInit {
 
       return false;
     }
-    // if (this.form.value.first_name == '') {
-    //   this.loading = false;
-    //   this.notificationService.showNotification(
-    //     NotificationType.error,
-    //     'Please supply the first name!',
-    //     'Information'
-    //   );
-    //   return false;
-    // }
-    // if (this.form.value.last_name == '') {
-    //   this.loading = false;
-    //   this.notificationService.showNotification(
-    //     NotificationType.error,
-    //     'Please supply the last name!',
-    //     'Information'
-    //   );
-    //   return false;
-    // }
-    // if (this.form.value.email == '') {
-    //   this.loading = false;
-    //   this.notificationService.showNotification(
-    //     NotificationType.error,
-    //     'Please supply the email addresss!',
-    //     'Information'
-    //   );
-    //   return false;
-    // }
-
     return true;
   }
 }
