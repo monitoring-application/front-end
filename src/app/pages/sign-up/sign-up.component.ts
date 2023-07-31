@@ -16,7 +16,8 @@ export class SignUpComponent implements OnInit {
   form = this.signUpService.form;
   mediaSub!: Subscription;
   public isMobile: boolean = false;
-  loading = false;
+  isLoading = false;
+  _isExist = true;
 
   constructor(
     public mediaObserver: MediaObserver,
@@ -36,36 +37,48 @@ export class SignUpComponent implements OnInit {
         this.isMobile = change.mqAlias === 'xs' ? true : false;
       });
 
-    this.route.params.subscribe((param: Params) => {
-      if (param['code']) {
-        console.log({ code: param['code'] });
-        // this.form.controls.referal_code.setValue(param['code']);
+    this.route.queryParams.subscribe((param: Params) => {
+      if (param['id']) {
+        this.form.controls.upline.setValue(param['id']);
       }
     });
   }
   submit() {
+    this.isLoading = true;
     if (!this.validation()) return;
 
     this.signUpService.create()?.subscribe({
-      next: (res) => {},
-      error: (err) => {
-        console.log({
-          error: err,
-        });
-      },
-      complete: () => {
+      next: (res) => {
+        if (res.data) {
+          this.notificationService.showNotification(
+            NotificationType.warning,
+            'This email is alread exist!',
+            'Warning'
+          );
+          this.isLoading = false;
+          return;
+        }
         this.notificationService.showNotification(
           NotificationType.success,
           'Successfully Saved!',
           'Success'
         );
         setTimeout(() => {
-          this.loading = false;
+          this.isLoading = false;
           this.signUpService.form.reset(this.signUpService.resetform.value);
         }, 500);
       },
+      error: (err) => {
+        console.log({
+          error: err,
+        });
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
     });
   }
+
   validation(): boolean {
     this.form.markAllAsTouched();
 
@@ -78,6 +91,7 @@ export class SignUpComponent implements OnInit {
 
       return false;
     }
+
     return true;
   }
 }

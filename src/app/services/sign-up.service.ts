@@ -13,6 +13,7 @@ var routes = new requestRoutes();
 })
 export class SignUpService {
   private baseUrl = '/v1/sign-up';
+  _isExist = true;
   form = this.fb.group({
     id: '',
     member_code: '',
@@ -44,10 +45,13 @@ export class SignUpService {
     let header = new HttpHeaders();
     header = header.set('api-key', routes.apiKey);
 
-    return this.httpClient.post(url, payload, {
+    const data =  this.httpClient.post(url, payload, {
       headers: header,
     });
+
+    return data;
   }
+
   fetchData(value: string, pageNumber: number, pageSize: number) {
     var url: string =
       routes.baseBackendUrl +
@@ -88,5 +92,27 @@ export class SignUpService {
       headers: header,
     });
     return data;
+  }
+
+  findByEmail(email: string) {
+    var url: string =
+      routes.baseBackendUrl + routes.signUp + '/findByEmail/' + email;
+
+    let header = new HttpHeaders();
+    header = header.set('api-key', routes.apiKey);
+
+    this.httpClient
+      .get(url, {
+        headers: header,
+      })
+      .subscribe({
+        next: async (resp: any) => {
+          const { data } = resp;
+          this._isExist = data;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 }

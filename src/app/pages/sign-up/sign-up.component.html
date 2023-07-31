@@ -22,10 +22,10 @@
                 [email]="true"
               />
             </mat-form-field>
-            <div class="text-color text-lg font-bold">Mobile Number</div>
+            <!-- <div class="text-color text-lg font-bold">Mobile Number</div>
             <mat-form-field class="w-3/4" appearance="outline">
               <input matInput formControlName="mobile_number" />
-            </mat-form-field>
+            </mat-form-field> -->
             <div>
               <button mat-raised-button class="fonts w-36" (click)="submit()">
                 Sign Up
@@ -61,14 +61,13 @@
               />
             </mat-form-field>
           </div>
-          <div class="col-span-2">
-            <div class="text-color text-sm font-bold">Mobile Number</div>
-            <mat-form-field class="w-full" appearance="outline">
-              <input matInput formControlName="mobile_number" />
-            </mat-form-field>
-          </div>
           <div>
-            <button mat-raised-button class="fonts w-28" (click)="submit()">
+            <button
+              mat-raised-button
+              class="fonts w-28"
+              (click)="submit()"
+              [disabled]="isLoading"
+            >
               Sign Up
             </button>
           </div>
@@ -88,7 +87,9 @@
     padding-top: 41px;
     border-radius: 10px;
     margin-top: 20px;
-  "
+  "<button mat-raised-button class="fonts w-28" (click)="submit() >
+              Sign Up
+            </button>
 >
   <div>
     <p style="font-size: 16px"><b>Hi, John</b></p>

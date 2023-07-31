@@ -45,11 +45,11 @@ input{
     padding-bottom: 5px !important;
   } */
   ::ng-deep .mat-form-field-outline-start {
-    border-radius: 15px 0 0 15px !important;
+    border-radius: 8px 0 0 8px !important;
     min-width: 15px !important;
   }
   ::ng-deep .mat-form-field-outline-end {
-    border-radius: 0 15px 15px 0 !important;
+    border-radius: 0 8px 8px 0 !important;
   }
   ::ng-deep .mat-checkbox-inner-container {
     width: 25px !important;
