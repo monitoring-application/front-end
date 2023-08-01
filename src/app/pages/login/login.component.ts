@@ -60,7 +60,6 @@ export class LoginComponent implements OnInit {
           })
           .catch((err) => {
             var str = err.error.message || '';
-            this.loginError = str[0].toUpperCase() + str.slice(1); //"Invalid Credentials";
             this.isProcessing = false;
           });
       }, 3000);

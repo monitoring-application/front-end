@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
   public isMobile: boolean = false;
   isLoading = false;
   _isExist = true;
+  paramCode = '';
 
   constructor(
     public mediaObserver: MediaObserver,
@@ -38,15 +39,13 @@ export class SignUpComponent implements OnInit {
       });
 
     this.route.queryParams.subscribe((param: Params) => {
-      if (param['id']) {
-        this.form.controls.upline.setValue(param['id']);
-      }
+      if (!param['code']) return;
+      this.paramCode = param['code'];
     });
   }
   submit() {
     this.isLoading = true;
     if (!this.validation()) return;
-
     this.signUpService.create()?.subscribe({
       next: (res) => {
         if (res.data) {
@@ -81,6 +80,8 @@ export class SignUpComponent implements OnInit {
 
   validation(): boolean {
     this.form.markAllAsTouched();
+
+    this.form.controls.upline.setValue(this.paramCode);
 
     if (!this.form.valid) {
       this.notificationService.showNotification(
